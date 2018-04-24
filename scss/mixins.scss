@@ -1,5 +1,13 @@
 // Mixins
 
+@mixin clearfix{
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
 @mixin banner {
   width: 100%;
   position: relative;
@@ -21,5 +29,15 @@
   span.title {
     font-weight: normal;
     margin-bottom: 30px;
+  }
+}
+
+@mixin grid($cols, $mgn) {
+  float: left;
+  margin-right: $mgn;
+  margin-bottom: $mgn;
+  width: ((100% - (($cols - 1) * $mgn)) / $cols );
+  &:nth-child(#{$cols}n){
+    margin-right: 0;
   }
 }
