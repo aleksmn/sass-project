@@ -25,12 +25,39 @@
     display: block;
     text-transform: uppercase;
     font-weight: bold;
+    @include mQ(4000px, 1200px) {
+      font-size: 68px;
+    }
+    @include mQ(850px) {
+      font-size: 32px;
+    }
   }
   span.title {
     font-weight: normal;
-    margin-bottom: 30px;
+    margin-bottom: 14px;
   }
-}
+
+  li {
+    text-transform: none;
+
+    @include mQ(4000px, 850px) {
+      font-size: 1.4em;
+      max-width: 60%;
+      margin: 30px 0;
+    }
+    @include mQ(850px) {
+      font-size: 1.2em;
+      max-width: 90%;
+      margin: 20px 0;
+    }
+    @include mQ(600px) {
+      display: none;
+      
+    }
+
+  }
+
+} // end @mixin banner
 
 @mixin grid($cols, $mgn) {
   float: left;
@@ -40,4 +67,22 @@
   &:nth-child(#{$cols}n){
     margin-right: 0;
   }
-}
+} // end @mixin grid
+
+// Media queries
+
+@mixin mQ($arg...) {
+  @if length($arg) == 1 {
+    @media screen and (max-width: nth($arg, 1)) {
+      @content; 
+    }
+  }
+  @if length($arg) == 2 {
+    @media screen and (max-width: nth($arg, 1)) 
+                  and (min-width: nth($arg, 2)) {
+      @content; 
+    }
+  }
+}   
+
+ 
