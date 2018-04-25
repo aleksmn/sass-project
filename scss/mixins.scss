@@ -51,8 +51,7 @@
       margin: 20px 0;
     }
     @include mQ(600px) {
-      display: none;
-      
+      display: none;  
     }
 
   }
